@@ -11,3 +11,5 @@ RESOURCES += qml.qrc
 
 #USE MAIN LOOP WDT.
 include($$PWD/../io/io.pri)
+
+DEFINES
