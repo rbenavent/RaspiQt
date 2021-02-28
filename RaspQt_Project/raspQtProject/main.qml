@@ -1,8 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
+import QtQuick 2.11
+import QtQuick.Window 2.11
+import QtQuick.Controls 2.4
 
 
-import QtQuick.Controls 2.12
 Window {
     id:playerWindow
     width: 600
@@ -15,10 +15,10 @@ Window {
         Column{
             spacing:10
             anchors.centerIn: parent
-            /*BusyIndicator { //uses his own thread
-                running: true
-                anchors.horizontalCenter: parent.horizontalCenter
-            }*/
+            //BusyIndicator { //uses his own thread
+            //    running: true
+           //     anchors.horizontalCenter: parent.horizontalCenter
+            //}
             Rectangle {
                 width: 100; height: 100
                 anchors.horizontalCenter: parent.horizontalCenter
