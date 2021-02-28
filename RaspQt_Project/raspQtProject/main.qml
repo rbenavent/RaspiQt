@@ -165,5 +165,73 @@ Window {
                 text:qsTr("PROCESS ARGUMENTS = ") + ARGLIST
             }
         }*/
+
+        //StackView de ventanas principal
+        StackView {
+            id: stackViewMain
+            anchors.fill: parent
+            focus: true
+
+            Component.onCompleted:{
+                //if(mainPantalla15)cargarBannerLang()
+                //ini_page()
+            }
+            onCurrentItemChanged: {
+                if (currentItem === null)
+                    console.debug("Vaciada stackViewMain")
+                else
+                    console.info("[USUARIO] VENTANA ACTUAL: " + currentItem.objectName)
+            }
+
+            pushEnter: Transition {
+                PropertyAnimation {
+                    property: "scale"
+                    from: 0
+                    to: 1
+                    duration: 300
+                }
+            }
+            pushExit: Transition {
+                PropertyAnimation {
+                    property: "scale"
+                    from: 1
+                    to: 0
+                    duration: 300
+                }
+            }
+            popEnter: Transition {
+                PropertyAnimation {
+                    property: "scale"
+                    from: 0
+                    to: 1
+                    duration: 300
+                }
+            }
+            popExit: Transition {
+                PropertyAnimation {
+                    property: "scale"
+                    from: 1
+                    to: 0
+                    duration: 300
+                }
+            }
+            replaceEnter: Transition {
+                PropertyAnimation {
+                    property: "scale"
+                    from: 0
+                    to: 1
+                    duration: 300
+                }
+            }
+
+            replaceExit: Transition {
+                PropertyAnimation {
+                    property: "scale"
+                    from: 1
+                    to: 0
+                    duration: 300
+                }
+            }
+        }
     }
 }
