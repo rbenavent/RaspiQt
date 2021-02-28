@@ -4,21 +4,60 @@ import QtQuick.Controls 2.4
 
 
 Window {
-    id:playerWindow
-    width: 600
-    height: 800
+    id:rootWindow
+    width: 800
+    height: 600
     visible: true
-    title: qsTr("QT Main Loop block TEST")
+    title: qsTr("Raspberry input/output TEST")
     Page{
         id:page
         anchors.fill: parent
-        Column{
+
+        //membrete
+        Rectangle{
+            id:membrete
+            width: rootWindow.width; height: rootWindow.height/7
+            color:"#d3d3d3"
+        }
+
+        //barra menu
+        Rectangle{
+            width: rootWindow.width/10; height: rootWindow.height - membrete.height
+            x:0
+            y:membrete.height
+            color:"lightblue"
+            Column{
+                width: parent.width
+                spacing:10
+                //anchors.centerIn: parent
+
+                Button{
+                    width: parent.width
+                    text:qsTr("Casa")
+                    font.bold: true
+                }
+
+                Button{
+                    width: parent.width
+                    text:qsTr("Porche")
+                    font.bold: true
+                }
+                Button{
+                    width: parent.width
+                    text:qsTr("Timbre")
+                    font.bold: true
+                }
+                Button{
+                    width: parent.width
+                    text:qsTr("In/Out")
+                    font.bold: true
+                }
+            }
+        }
+
+/*        Column{
             spacing:10
             anchors.centerIn: parent
-            //BusyIndicator { //uses his own thread
-            //    running: true
-           //     anchors.horizontalCenter: parent.horizontalCenter
-            //}
             Rectangle {
                 width: 100; height: 100
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -107,8 +146,8 @@ Window {
                 }
             }
 
-        }
-        Column{
+        }*/
+        /*Column{
             width: parent.width
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
@@ -125,6 +164,6 @@ Window {
                 visible:ARGLIST.length>0
                 text:qsTr("PROCESS ARGUMENTS = ") + ARGLIST
             }
-        }
+        }*/
     }
 }
