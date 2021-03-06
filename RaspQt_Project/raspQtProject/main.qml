@@ -22,6 +22,7 @@ Window {
 
         //barra menu
         Rectangle{
+            id:menuBar
             width: rootWindow.width/10; height: rootWindow.height - membrete.height
             x:0
             y:membrete.height
@@ -35,6 +36,7 @@ Window {
                     width: parent.width
                     text:qsTr("Casa")
                     font.bold: true
+                    //onClicked: view.view=1
                 }
 
                 Button{
@@ -51,123 +53,82 @@ Window {
                     width: parent.width
                     text:qsTr("In/Out")
                     font.bold: true
+                    //onClicked: view.moveItem(thirdPage,firstPage)
                 }
+            }
+
+        }
+
+        Rectangle{
+            width: parent.width - menuBar.width
+            height: parent.height - membrete.height
+            x:menuBar.width
+            y:membrete.height
+            border.color: "black"
+            border.width: 1
+
+            StackView{
+                //width: parent.width - menuBar.width
+                //height: parent.height - membrete.height
+                //x:menuBar.width
+                //y:membrete.height
+                width: parent.width
+                height: parent.height
+                id: contentFrame
+                initialItem: Qt.resolvedUrl("qrc:/testio.qml")
+            }
+
+            Component.onCompleted: {
+                contentFrame.replace("qrc:/testio.qml")
             }
         }
 
-/*        Column{
-            spacing:10
-            anchors.centerIn: parent
-            Rectangle {
-                width: 100; height: 100
-                anchors.horizontalCenter: parent.horizontalCenter
-                SequentialAnimation on color {
-                    loops: -1
-                    ColorAnimation { to: "gray"; duration: 1000 }
-                    ColorAnimation { to: "red"; duration: 1000 }
-                }
-                SequentialAnimation on width {
-                    loops: -1
-                    NumberAnimation { to: 50; duration: 1000 }
-                    NumberAnimation { to: 100; duration: 1000 }
-                }
-            }
-            Label{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:timer.counter.toString()
-                Timer{
-                    id:timer
-                    property int counter:0
-                    interval: 100
-                    running: true
-                    repeat: true
-                    onTriggered: counter++
-                }
-            }
 
+        /*SwipeView {
+            id: view
 
-            Label{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:qsTr("Press button to start a infinite loop")
-            }
-            Button{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:qsTr("START QML INFINITE LOOP")
-                onClicked: {
-                    for(;;){} //inifinite loop
-                }
-            }
+            currentIndex: 0
+            anchors.fill: parent
 
-            Button{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:qsTr("START C++ INFINITE LOOP")
-                onClicked: {
-                    Utils.infiniteLoop()
-                }
+            Item {
+                id: firstPage
             }
-            Button{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:qsTr("C++ MUTEX DOUBLE LOCK")
-                onClicked: {
-                    Utils.mutexDoubleLock()
-                }
+            Item {
+                id: secondPage
             }
+            Item {
+                id: thirdPage
+            }
+        }
 
-            Label{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:qsTr("Test fast restart")
-            }
-            Button{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:qsTr("FORCE APP RESTART")
-                onClicked: {
-                    WDT.forceAppRestart()
-                }
-            }
-            Label{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:qsTr("Test Watch Dog Timer (WDT) ON/OFF")
-            }
-            Button{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:checked?qsTr("WDT ENABLED"):qsTr("WDT DISABLED")
-                checkable: true
-                checked: true
-                onClicked: {
-                    if(checked) WDT.startWdt()
-                    else WDT.stopWdt()
-                }
-            }
-            Button{
-                anchors.horizontalCenter: parent.horizontalCenter
-                text:qsTr("BLOCK UI 5500ms")
-                onClicked: {
-                    Utils.temporalBlockMainLoop(5500)
-                }
-            }
+        PageIndicator {
+            id: indicator
 
-        }*/
-        /*Column{
-            width: parent.width
-            anchors.bottom: parent.bottom
+            count: view.count
+            currentIndex: view.currentIndex
+
+            anchors.bottom: view.bottom
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 5
-            Label{
-                width: parent.width
-                wrapMode: Text.WordWrap
-                visible:ENV.length>0
-                text:qsTr("ENVIRONMENT INHERITANCE. WDT_TEST = ") + ENV
-            }
-            Label{
-                width: parent.width
-                wrapMode: Text.WordWrap
-                visible:ARGLIST.length>0
-                text:qsTr("PROCESS ARGUMENTS = ") + ARGLIST
-            }
-        }*/
+        }
+
+    }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //StackView de ventanas principal
-        StackView {
+        /*StackView {
             id: stackViewMain
             anchors.fill: parent
             focus: true
@@ -232,6 +193,6 @@ Window {
                     duration: 300
                 }
             }
-        }
+        }*/
     }
 }

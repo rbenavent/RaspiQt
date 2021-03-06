@@ -3,8 +3,8 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Extras 1.4
 
-import "qrc:/Widgets"
-import "qrc:/Complementos"
+//import "qrc:/Widgets"
+//import "qrc:/Complementos"
 
 RowLayout {
     property alias stIndIn: stIn.active
