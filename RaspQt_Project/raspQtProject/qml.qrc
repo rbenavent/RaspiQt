@@ -4,5 +4,6 @@
         <file>testio.qml</file>
         <file>casa.qml</file>
         <file>images/casa_1.png</file>
+        <file>timbre.qml</file>
     </qresource>
 </RCC>

@@ -48,6 +48,7 @@ Window {
                     width: parent.width
                     text:qsTr("Timbre")
                     font.bold: true
+                    onClicked: contentFrame.replace("qrc:/timbre.qml")
                 }
                 Button{
                     width: parent.width

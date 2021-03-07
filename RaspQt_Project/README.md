@@ -35,6 +35,7 @@ Qt & QML is released under the terms of the **GNU LGPL v3 License**. Full detail
 - qtquick1-*
 - qtquickcontrols5-*
 - qml-module-qtquick2
+- apt-get install libqt5multimedia5-plugins qml-module-qtmultimedia
 ╭------┬---------┬----------------------------┬-------------------╮
 |      |         | QtQuick.Controls,          |                   |
 |      |         | QtQuick.Controls.Material, |                   |
