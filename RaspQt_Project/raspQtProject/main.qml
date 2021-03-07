@@ -36,7 +36,7 @@ Window {
                     width: parent.width
                     text:qsTr("Casa")
                     font.bold: true
-                    //onClicked: view.view=1
+                    onClicked: contentFrame.replace("qrc:/casa.qml")//view.view=1
                 }
 
                 Button{
@@ -53,7 +53,7 @@ Window {
                     width: parent.width
                     text:qsTr("In/Out")
                     font.bold: true
-                    //onClicked: view.moveItem(thirdPage,firstPage)
+                    onClicked: contentFrame.replace("qrc:/testio.qml")//view.moveItem(thirdPage,firstPage)
                 }
             }
 
@@ -75,11 +75,11 @@ Window {
                 width: parent.width
                 height: parent.height
                 id: contentFrame
-                initialItem: Qt.resolvedUrl("qrc:/testio.qml")
+                initialItem: Qt.resolvedUrl("qrc:/casa.qml")
             }
 
             Component.onCompleted: {
-                contentFrame.replace("qrc:/testio.qml")
+                contentFrame.replace("qrc:/casa.qml")
             }
         }
 

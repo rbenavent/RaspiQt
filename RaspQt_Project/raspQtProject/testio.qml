@@ -118,37 +118,80 @@ Item {
             GroupBox {
                 id:sOutputs
                 title: qsTr("OUTPUTS");
-                ColumnLayout {
-                    id: rowLayout
-                    //anchors.fill: parent
+                RowLayout{
+                    id:layoutOutputs
                     Layout.alignment: Qt.AlignTop
 
-                    Label {
-                        id: tOut
-                        text: qsTr("OUT ")//.concat(posIO)
-                        Layout.fillWidth: true
-                        font.pixelSize: 10
-                    }
-                    StatusIndicator {
-                        id: stOut
-                        Layout.fillHeight: true
-                        Layout.fillWidth: true
+                    width: parent.width
+                    height: parent.height
 
-                        color: "green"
+                    ColumnLayout {
+                        id: rowOutL1
+                        //anchors.fill: parent
+                        Layout.alignment: Qt.AlignTop
+
+                        Label {
+                            id: tOut1
+                            text: qsTr("OUT ")//.concat(posIO)
+                            Layout.fillWidth: true
+                            font.pixelSize: 10
+                        }
+                        StatusIndicator {
+                            id: stOut1
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+
+                            color: "green"
+                        }
+
+                        Button {
+                            id: b1Out1
+                            text: qsTr("1")
+                            onClicked:Io.outChange(0, true)
+                        }
+
+                        Button {
+                            id: b0Out1
+                            text: qsTr("0")
+                            onClicked:Io.outChange(0, false)
+                        }
                     }
 
-                    Button {
-                        id: b1Out1
-                        text: qsTr("1")
-                        onClicked: changeOut(false)
+
+                    ColumnLayout {
+                        id: rowOutL2
+                        //anchors.fill: parent
+                        Layout.alignment: Qt.AlignTop
+
+                        Label {
+                            id: tOut2
+                            text: qsTr("OUT ")//.concat(posIO)
+                            Layout.fillWidth: true
+                            font.pixelSize: 10
+                        }
+                        StatusIndicator {
+                            id: stOut2
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+
+                            color: "green"
+                        }
+
+                        Button {
+                            id: b1Out2
+                            text: qsTr("1")
+                            onClicked:Io.outChange(1, true)
+                        }
+
+                        Button {
+                            id: b0Out2
+                            text: qsTr("0")
+                            onClicked:Io.outChange(1, false)
+                        }
                     }
 
-                    Button {
-                        id: b0Out1
-                        text: qsTr("0")
-                        onClicked: changeOut(true)
-                    }
-                }
+
+                }//RowLayout OUTPUTS
             }// GroupBox
         }//SwipeView
 
@@ -176,6 +219,10 @@ Item {
             stIn2.active = value & 0x02
             stIn3.active = value & 0x04
             stIn4.active = value & 0x08
+        }
+        onSgnOutputs:{//feedback outputs state
+            stOut1.active = value & 0x01
+            stOut2.active = value & 0x02
         }
     }
 

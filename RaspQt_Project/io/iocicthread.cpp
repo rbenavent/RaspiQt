@@ -94,7 +94,7 @@ void IoCicThread::initIOEntradas(void) {
 void IoCicThread::initIOSalidas(void) {
 
     for (int i = 0; i < MAXSALIDAS; i++)
-        initIO(_salidas.pinSalidas[i], OUT, true);
+        initIO(_salidas.pinSalidas[i], OUT, false);
 }
 
 /**
@@ -165,6 +165,7 @@ bool IoCicThread::setOut(unsigned char pin, bool value) {
     QString v = value ? "1" : "0";
     sval << v << endl;
     fval.close();
+    qDebug()<< "Salida" <<val <<":" << v;
     return true;
 }
 

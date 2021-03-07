@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>testio.qml</file>
+        <file>casa.qml</file>
+        <file>images/casa_1.png</file>
     </qresource>
 </RCC>

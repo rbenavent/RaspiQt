@@ -23,7 +23,7 @@ Io::Io(QObject* parent) : QObject(parent) {
         auto& ioCicThread = IoCicThread::instance();
 
         connect(&ioCicThread, &IoCicThread::sgnReadIn, this, &Io::onInChange, Qt::QueuedConnection);
-        connect(&ioCicThread, &IoCicThread::sgnReadOut, this, &Io::onOutChange);//, Qt::QueuedConnection);
+        connect(&ioCicThread, &IoCicThread::sgnReadOut, this, &Io::onOutChange, Qt::QueuedConnection);
         connect(&ioCicThread, &QThread::finished, this, &Io::onThreadFinished);
 
         ioCicThread.start(QThread::HighestPriority);
@@ -39,12 +39,13 @@ Io::Io(QObject* parent) : QObject(parent) {
 */
 void Io::onInChange(int value) {
     emit sgnInputs(value);
-    qDebug() << "eviamos las entradas" << value ;
+    //qDebug() << "eviamos las entradas" << value ;
 }
 
 
 void Io::onOutChange(int value) {
-
+    _outStates = value;
+    emit sgnOutputs(value);
 }
 
 
@@ -54,11 +55,10 @@ void Io::onOutChange(int value) {
     @param out
     @param state
 */
-void Io::outChange(unsigned out, bool state) {
-    //qDebug() << "CAMBIA SALIDA" << out << "A ESTADO" << state; //llena de mensajes al tener activo el PMR / Tecl.Matricial
+void Io::outChange(unsigned out, bool state) {    
 
     auto& ioCicThread = IoCicThread::instance();
-    ioCicThread.setOut(static_cast<unsigned char>(out), state);
+    ioCicThread.setOut(static_cast<unsigned char>(out), state);    
 }
 
 
@@ -67,8 +67,9 @@ void Io::outChange(unsigned out, bool state) {
     @return
 */
 int Io::getOut() {
-    //return _outprev;
-    return 0;
+    qDebug() << "Estado SALIDAs" << _outStates;
+    return _outStates;
+    //return 0;
 }
 
 /**

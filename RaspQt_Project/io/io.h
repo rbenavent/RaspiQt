@@ -28,6 +28,10 @@ public:
 
 signals:
     void sgnInputs(int value);
+    void sgnOutputs(int value);//feedback outputs state
+
+protected:
+    int _outStates;
 
 public slots:
     void onInChange(int out);
