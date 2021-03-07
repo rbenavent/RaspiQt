@@ -1,6 +1,9 @@
 #include <QDebug>
 #include <iocicthread.h>
 
+#include <QQmlComponent>
+#include <QQmlEngine>
+
 #include <QDir>
 #include <QFile>
 #include <QMutex>
@@ -17,6 +20,17 @@ static QMutex out_mutex;
 #endif
 
 IoCicThread::IoCicThread(QObject* parent) : QThread(parent) {
+//#ifdef USEQML
+    qmlRegisterSingletonType<IoCicThread>("io.iocicthread", 1, 0, "IoCicThread", [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
+        Q_UNUSED(engine)
+        Q_UNUSED(scriptEngine)
+        return &IoCicThread::instance();
+    });
+//#endif
+    //reemitir la señal KeyPMR::sgnKeyPress a KeyPMR::sgnKeyPressQml en el main loop
+    //connect(this, &KeyPMR::sgnKeyPress, this, &KeyPMR::sgnKeyPressQml, Qt::QueuedConnection);
+
+    //start(QThread::HighPriority);
 
     initIOEntradas();
     initIOSalidas();
@@ -89,7 +103,7 @@ void IoCicThread::initIOSalidas(void) {
     @return
 */
 bool IoCicThread::getIn(unsigned char pin) {
-    if (pin >= sizeof(CIC_ENTRADAS))
+    if (pin >= sizeof(ENTRADAS))
         return false;
 
     const unsigned char* const aux = (const unsigned char* const)(&_entradas);
@@ -111,7 +125,7 @@ bool IoCicThread::getIn(unsigned char pin) {
     @return
 */
 bool IoCicThread::getOut(unsigned char pin) {
-    if (pin >= sizeof(CIC_SALIDAS))
+    if (pin >= sizeof(SALIDAS))
         return false;
 
     const unsigned char* const aux = (const unsigned char* const)(&_salidas);
@@ -134,7 +148,7 @@ bool IoCicThread::getOut(unsigned char pin) {
     @return
 */
 bool IoCicThread::setOut(unsigned char pin, bool value) {
-    if (pin >= sizeof(CIC_SALIDAS))
+    if (pin >= sizeof(SALIDAS))
         return false;
 
     QMutexLocker lock(&out_mutex);
@@ -161,14 +175,16 @@ bool IoCicThread::setOut(unsigned char pin, bool value) {
 void IoCicThread::readIn() {
     int in = 0;
 
-    for (unsigned char i = 0; i < sizeof(CIC_ENTRADAS); i++)
+    for (unsigned char i = 0; i < sizeof(ENTRADAS); i++)
         if (getIn(i))
             in |= 1U << i;
 
     if (in != _prevInt) {
         _prevInt = in;
         sgnReadIn(in);
+        qInfo()<< "Entradas: "<<_prevInt;
     }
+
 }
 
 /**
@@ -202,7 +218,7 @@ void IoCicThread::readOut() {
     QMutexLocker lock(&out_mutex);
     int out = 0;
 
-    for (unsigned char i = 0; i < sizeof(CIC_SALIDAS); i++) {
+    for (unsigned char i = 0; i < sizeof(SALIDAS); i++) {
         if (getOut(i))
             out |= 1U << i;
     }

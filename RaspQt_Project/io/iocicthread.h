@@ -45,7 +45,7 @@
 #define INP3 IO25
 #define INP4 IO16
 
-#define MAXENTRADAS 5
+#define MAXENTRADAS 4
 
 //SALIDAS GENERALES
 #define OUT1 IO17
@@ -85,12 +85,12 @@ public:
     }
 
     // Todas las entradas de la CIC
-    struct CIC_ENTRADAS {
+    struct ENTRADAS {
         const unsigned char pinEntradas[MAXENTRADAS] = {INP1, INP2, INP3, INP4};
     };
 
     // Todas las salidas de la CIC
-    struct CIC_SALIDAS {
+    struct SALIDAS {
         const unsigned char pinSalidas[MAXSALIDAS] = {OUT1, OUT2, OUT3, OUT4, OUT5, OUT6};
     };
 
@@ -104,8 +104,8 @@ private:
     enum IN_OUT { IN,
                   OUT };
 
-    const CIC_ENTRADAS _entradas;
-    const CIC_SALIDAS _salidas;
+    const ENTRADAS _entradas;
+    const SALIDAS _salidas;
 
     int _prevOut;
     int _prevInt;
