@@ -3,7 +3,10 @@
 #include <QQmlContext>
 #include <QtDebug>
 
+#include "io.h"
+#include "iocicthread.h"
 #include "utils.h"
+
 
 //MAIN LOOP WDT.
 //#include "mainLoopWdt.h"
@@ -18,6 +21,11 @@ int main(int argc, char* argv[]) {
     QString env_wdt_test = qgetenv("WDT_TEST");
     qDebug() << "ENV WDT_TEST=" << env_wdt_test;
     qputenv("WDT_TEST", "test ok"); //set magic word to WDT_TEST
+
+    //Io* Io = new Io();
+    Io::instance();
+    IoCicThread::instance();
+//    iocicthread::instance();
 
     QQmlApplicationEngine engine;
 
