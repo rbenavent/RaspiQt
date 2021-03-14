@@ -1,16 +1,19 @@
 QT += quick
 //QT += quickcontrols2
+//QT += mqtt
 
 CONFIG += c++17
 
 SOURCES += main.cpp \
-    utils.cpp
+    utils.cpp \
+    mqttData.cpp
 
-HEADERS += utils.h
+HEADERS += utils.h \
+    mqttData.h
 
 RESOURCES += qml.qrc
 
-#USE MAIN LOOP WDT.
 include($$PWD/../io/io.pri)
+include($$PWD/../mqttclient/mqttclient.pri)
 
 DEFINES

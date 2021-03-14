@@ -5,6 +5,8 @@
 
 #include "io.h"
 #include "iocicthread.h"
+#include "mqttclient.h"
+#include "mqttData.h"
 #include "utils.h"
 
 
@@ -26,6 +28,15 @@ int main(int argc, char* argv[]) {
     Io::instance();
     IoCicThread::instance();
 //    iocicthread::instance();
+
+    //Connect mqtt using TCP:
+    MqttClient _mqttClient;
+    _mqttClient.init("192.168.0.22","1883");
+   // _mqttClient.subscribed("sensoresporche/sensor/temperatura_comedor/state");
+   // _mqttClient.subscribed("timbrecocina/sensor/temperaturacocina/state");
+    MqttData _mttData;
+
+    //_mqttClient.startazure("","","");
 
     QQmlApplicationEngine engine;
 

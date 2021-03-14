@@ -83,7 +83,7 @@ Item {
 
         Timer {
             id:timercam
-            interval: 200
+            interval: 1000
             running: true
             repeat: true
             onTriggered:  {
