@@ -43,6 +43,7 @@ Window {
                     width: parent.width
                     text:qsTr("Porche")
                     font.bold: true
+                    onClicked: contentFrame.replace("qrc:/patio.qml")
                 }
                 Button{
                     width: parent.width

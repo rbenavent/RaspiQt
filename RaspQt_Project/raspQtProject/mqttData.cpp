@@ -6,6 +6,14 @@
 
 MqttData::MqttData(QObject *parent) : QObject(parent){
 
+    //#ifdef USEQML
+        qmlRegisterSingletonType<MqttData>("mqttclient.mqttclient", 1, 0, "MqttData", [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
+            Q_UNUSED(engine)
+            Q_UNUSED(scriptEngine)
+            return &MqttData::instance();
+        });
+    //#endif
+
     //recargar configuracion por orden del cloud
     connect(&_mqttClient, &MqttClient::msgReceived, this, &MqttData::onMQTTparserResp);
 

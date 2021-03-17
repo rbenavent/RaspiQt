@@ -65,8 +65,8 @@ signals:
 
     void msgReceived(const QString& msg);
     void sgnTemperaturaPorche(QString msg);
-    void msgTemperaturaComedor(const QString& msg);
-    void msgTemperaturaCocina(const QString& msg);
+    void sgnTemperaturaComedor(QString msg);
+    void sgnTemperaturaCocina(QString msg);
 
 private:
     QTemporaryFile _tmp;

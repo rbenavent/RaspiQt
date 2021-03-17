@@ -38,6 +38,14 @@ Qt & QML is released under the terms of the **GNU LGPL v3 License**. Full detail
 - apt-get install libqt5multimedia5-plugins qml-module-qtmultimedia
 - apt-get install qtbase5-private-dev libqt5websockets5-dev
 
+/******for webglplugin******/
+- apt-get install libfontconfig1-dev  (fail in make qtwebplugin)
+>>dowload qtwebplugin:    qtwebglplugin-everywhere-src-5.12.10  from   https://download.qt.io/official_releases/qt
+>>unzip and run: qmake  and   make
+after make, cpying the "libqwebgl.so" into root@raspberrypi:/usr/lib/arm-linux-gnueabihf/qt5/plugins/platforms#
+to run app with webgl: ./your-qt-application -platform webgl:port=8998   (from QtCreator Projects -> Command line Argument: -platform webgl:port=8998)
+
+
 ╭------┬---------┬----------------------------┬-------------------╮
 |      |         | QtQuick.Controls,          |                   |
 |      |         | QtQuick.Controls.Material, |                   |

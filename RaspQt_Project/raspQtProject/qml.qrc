@@ -3,7 +3,9 @@
         <file>main.qml</file>
         <file>testio.qml</file>
         <file>casa.qml</file>
-        <file>images/casa_1.png</file>
         <file>timbre.qml</file>
+        <file>patio.qml</file>
+        <file>images/patio.png</file>
+        <file>images/casa.png</file>
     </qresource>
 </RCC>

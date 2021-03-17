@@ -11,16 +11,25 @@ class  MqttData: public QObject
 {
     Q_OBJECT
 public:
-    explicit MqttData(QObject *parent = nullptr);
-    //C++ main loop lock tests
-    //Q_INVOKABLE void infiniteLoop ();
-    //Q_INVOKABLE void temporalBlockMainLoop(unsigned int miliseconds);
-    //Q_INVOKABLE void mutexDoubleLock();
+
+    static MqttData &instance() {
+        static MqttData INSTANCE;
+        return  INSTANCE;
+    }
+
+
+    explicit MqttData(QObject* parent = nullptr);
+
+    //explicit MqttData(QObject *parent = nullptr);
+
+    //explicit MqttData(QObject* parent = nullptr);
+    //virtual ~MqttData();
+
 
 private:
     MqttClient _mqttClient;
 
-private slots:
+public slots:
     void onMQTTparserResp(const QString& msg);
 };
 

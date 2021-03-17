@@ -295,13 +295,13 @@ void MqttClient::received(const QMQTT::Message& message) {
     if(message.topic() == "sensoresporche/sensor/temperatura_comedor/state"){
         QString Ta_comedor= message.payload();
         QString kk = Ta_comedor;
-        emit msgTemperaturaComedor(Ta_comedor);
+        emit sgnTemperaturaComedor(Ta_comedor);
     }
 
     if(message.topic() == "timbrecocina/sensor/temperaturacocina/state"){
         QString Ta_cocina= message.payload();
         QString kk = Ta_cocina;
-        emit msgTemperaturaCocina(Ta_cocina);
+        emit sgnTemperaturaCocina(Ta_cocina);
     }
 
     /*if (d.isObject()) {
