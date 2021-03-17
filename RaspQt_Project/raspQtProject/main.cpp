@@ -3,10 +3,13 @@
 #include <QQmlContext>
 #include <QtDebug>
 
+#include <QOpenGLContext>
+#include <QOpenGLFunctions>
+#include <QQuickWindow>
+
 #include "io.h"
 #include "iocicthread.h"
 #include "mqttclient.h"
-#include "mqttData.h"
 #include "utils.h"
 
 
@@ -30,11 +33,15 @@ int main(int argc, char* argv[]) {
 //    iocicthread::instance();
 
     //Connect mqtt using TCP:
-    MqttClient _mqttClient;
+    //MqttClient::instance();//bad code - connect this one
+    //MqttClient _mqttClient;//bad code - use the second
+
+    MqttClient &_mqttClient = MqttClient::instance(); //si el instance devuelve puntero: MqttClient &_mqttClient = *MqttClient::instance();
     _mqttClient.init("192.168.0.22","1883");
-   // _mqttClient.subscribed("sensoresporche/sensor/temperatura_comedor/state");
-   // _mqttClient.subscribed("timbrecocina/sensor/temperaturacocina/state");
-    MqttData _mttData;
+    //_mqttClient.subscribed("sensoresporche/sensor/temperatura_comedor/state");
+    //_mqttClient.subscribed("sensoresporche/sensor/temperatura_porche/state");
+    //_mqttClient.subscribed("sensoresporche/sensor/temperatura_comedor/state");
+    //_mqttClient.subscribed("timbrecocina/sensor/temperaturacocina/state");
 
     //_mqttClient.startazure("","","");
 
@@ -55,6 +62,38 @@ int main(int argc, char* argv[]) {
     engine.rootContext()->setContextProperty("ARGLIST", argList);  //test: keep process arguments
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    //wdt.startWdt(); //start WDT
+    /*if (engine.rootObjects().isEmpty()) {
+            qCritical() << "******************* ERROR LOADING MAIN !!!!!!!!!!! **************** ";
+            return -1;
+        }
+
+        // Crea ventana root en engine
+        QQuickWindow* window = dynamic_cast<QQuickWindow*>(engine.rootObjects().at(0));
+
+        if (window) {
+            //DATOS OPENGL
+            QObject::connect(window, &QQuickWindow::sceneGraphInitialized,
+                             [window, &engine]() -> void {
+                                 auto context     = window->openglContext();
+                                 auto functions   = context->functions();
+                                 QString vendor   = reinterpret_cast<const char*>(functions->glGetString(GL_VENDOR));
+                                 QString renderer = reinterpret_cast<const char*>(functions->glGetString(GL_RENDERER));
+                                 QString version  = reinterpret_cast<const char*>(functions->glGetString(GL_VERSION));
+                                 QString shading  = reinterpret_cast<const char*>(functions->glGetString(GL_SHADING_LANGUAGE_VERSION));
+                                 qInfo() << ("OPENGL: Vendor: " + vendor + ", Renderer: " + renderer + ", Version: " + version + ", Shader:   " + shading);
+                             });
+        }
+
+        if (window) {
+            if (QGuiApplication::platformName() == QLatin1String("qnx") ||
+                QGuiApplication::platformName() == QLatin1String("eglfs") ||
+                QSysInfo::currentCpuArchitecture().toLower().contains("arm")) {
+                window->showFullScreen();
+            } else {
+                window->showMaximized();
+            }
+        }
+
+    //wdt.startWdt(); //start WDT*/
     return app.exec();
 }

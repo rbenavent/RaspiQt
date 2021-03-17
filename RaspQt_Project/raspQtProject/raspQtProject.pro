@@ -5,11 +5,9 @@ QT += quick
 CONFIG += c++17
 
 SOURCES += main.cpp \
-    utils.cpp \
-    mqttData.cpp
+    utils.cpp
 
-HEADERS += utils.h \
-    mqttData.h
+HEADERS += utils.h
 
 RESOURCES += qml.qrc
 

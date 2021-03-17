@@ -22,7 +22,7 @@
 
 
 ## Delayed restart estrategy
-- Linux & MacOs : bash
+- Linux : bash
 
 
 ## License
@@ -36,6 +36,8 @@ Qt & QML is released under the terms of the **GNU LGPL v3 License**. Full detail
 - qtquickcontrols5-*
 - qml-module-qtquick2
 - apt-get install libqt5multimedia5-plugins qml-module-qtmultimedia
+- apt-get install qtbase5-private-dev libqt5websockets5-dev
+
 ╭------┬---------┬----------------------------┬-------------------╮
 |      |         | QtQuick.Controls,          |                   |
 |      |         | QtQuick.Controls.Material, |                   |

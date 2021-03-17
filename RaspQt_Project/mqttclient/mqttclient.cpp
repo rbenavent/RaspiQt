@@ -4,12 +4,26 @@
 #include <QMutex>
 #include <QSslConfiguration>
 
+#include <QQmlComponent>
+#include <QQmlEngine>
+
 //static const QString local_cert = "./ssl/device_local_cert.crt";
 //static const QString azure_cert = ":/ssl/azure.crt"; // Certificado en recurso
 
 MqttClient::MqttClient(QObject* parent) : QObject(parent) {
-    Q_INIT_RESOURCE(SSL_CERTS);
+    //Q_INIT_RESOURCE(SSL_CERTS);
     emitReady(false);
+
+    //#ifdef USEQML
+        qmlRegisterSingletonType<MqttClient>("mqttclient.mqttclient", 1, 0, "MqttClient", [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
+            Q_UNUSED(engine)
+            Q_UNUSED(scriptEngine)
+            return &MqttClient::instance();
+        });
+
+    //#endif
+
+
 }
 
 MqttClient::~MqttClient() {
@@ -270,6 +284,7 @@ void MqttClient::received(const QMQTT::Message& message) {
     if(message.topic() == "sensoresporche/sensor/temperatura_porche/state"){
         QString Ta= message.payload();
         QString kk = Ta;
+        emit sgnTemperaturaPorche(Ta);
     }
 
     if(message.topic() == "sensoresporche/sensor/humedadporche/state"){
@@ -280,11 +295,13 @@ void MqttClient::received(const QMQTT::Message& message) {
     if(message.topic() == "sensoresporche/sensor/temperatura_comedor/state"){
         QString Ta_comedor= message.payload();
         QString kk = Ta_comedor;
+        emit msgTemperaturaComedor(Ta_comedor);
     }
 
     if(message.topic() == "timbrecocina/sensor/temperaturacocina/state"){
         QString Ta_cocina= message.payload();
         QString kk = Ta_cocina;
+        emit msgTemperaturaCocina(Ta_cocina);
     }
 
     /*if (d.isObject()) {

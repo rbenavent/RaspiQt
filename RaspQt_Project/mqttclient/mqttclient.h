@@ -12,6 +12,14 @@ public:
         @brief MqttClient
         @param parent
     */
+
+
+    static MqttClient &instance() {
+        static MqttClient INSTANCE;
+        return  INSTANCE;
+    }
+
+
     explicit MqttClient(QObject* parent = nullptr);
     virtual ~MqttClient();
 
@@ -53,6 +61,13 @@ public:
 
     void init(const QString &hostname, const QString &port);
 
+signals:
+
+    void msgReceived(const QString& msg);
+    void sgnTemperaturaPorche(QString msg);
+    void msgTemperaturaComedor(const QString& msg);
+    void msgTemperaturaCocina(const QString& msg);
+
 private:
     QTemporaryFile _tmp;
 
@@ -81,6 +96,7 @@ private:
     QMQTT::Client* client = nullptr;
 
     void emitReady(bool bready);
+
 
 public slots:
     /**
@@ -135,11 +151,6 @@ signals:
         @param ready
     */
     void ready(bool ready);
-    /**
-        @brief received SLOT: onReceived message
-        @param message
-    */
-    void msgReceived(const QString& msg);
 
     //signal del error
     void onerror(const QMQTT::ClientError error);

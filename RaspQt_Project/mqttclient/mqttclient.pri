@@ -15,8 +15,8 @@ HEADERS += \
 SOURCES += \
     $$PWD/mqttclient.cpp
 
-RESOURCES += \
-    $$PWD/SSL_CERTS.qrc
+#RESOURCES += \
+#    $$PWD/SSL_CERTS.qrc
    
 INCLUDEPATH += $$PWD $$PWD/qmqtt/src/mqtt/
 
