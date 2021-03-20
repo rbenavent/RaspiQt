@@ -23,6 +23,8 @@ public:
     explicit MqttClient(QObject* parent = nullptr);
     virtual ~MqttClient();
 
+    Q_INVOKABLE virtual void publish_topic(const QString& TOPIC_CONTROL,const QString& payload);
+
     /**
         @brief startazure : MQTT login to azure MQTT server
         @param SASTocken complete SASTocken form azure
@@ -99,50 +101,14 @@ private:
 
 
 public slots:
-    /**
-        @brief msgStart SIGNAL. Recevide a remote start order
-        @param code ticket code to start
 
-        public slots:
-        @brief connected SLOT onConected
-    */
     void connected();
-    /**
-        @brief disconnected
-    */
     void disconnected();
-    /**
-        @brief publish SLOT. Pubilshes a message to IOT HUB
-        @param payload
-        @return
-    */
-    int publish(const QString& payload);
-    /**
-        @brief subscribed SLOT onSubscribed
-        @param topic
-    */
+    int publish(const QString& TOPIC_CONTROL,const QString& payload);
     void subscribed(const QString& topic);
-    /**
-        @brief unsubscribed SLOT onSubscribed
-        @param topic
-    */
     void unsubscribed(const QString& topic);
-    /**
-        @brief received SLOT: onReceived message
-        @param message
-    */
     void received(const QMQTT::Message& message);
-
-    /**
-        @brief published SLOT. On pusblished
-        @param message
-        @param msgid
-    */
     void published(const QMQTT::Message& message, quint16 msgid = 0);
-    /**
-        @brief error SLOT . on Error
-        @param error
-    */
     void error(const QMQTT::ClientError error);
 
 signals:
@@ -155,5 +121,6 @@ signals:
     //signal del error
     void onerror(const QMQTT::ClientError error);
 };
+
 
 #endif // MQTTCLIENT_H

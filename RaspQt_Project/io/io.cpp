@@ -76,6 +76,14 @@ int Io::getOut() {
     @brief IoCic::getIn
     @return
 */
+int Io::getInputs() {
+    return IoCicThread::instance().getInputs();
+    //return 0;
+}
+/**
+    @brief IoCic::getIn
+    @return
+*/
 int Io::getValue() {
     //return _inprev;
     return 0;

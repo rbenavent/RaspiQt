@@ -119,6 +119,9 @@ bool IoCicThread::getIn(unsigned char pin) {
     return sval.read(1) != "0";
 }
 
+int IoCicThread::getInputs() {
+    return _prevInt;
+}
 /**
     @brief IoCic::getOut
     @param pin

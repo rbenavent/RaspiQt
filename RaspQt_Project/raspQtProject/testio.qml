@@ -11,6 +11,7 @@ Item {
     id: testIO
     visible: true
     objectName: "testIO"
+    property int inputsValueOnInit: 0
 
     Pane {
         id: pane
@@ -310,6 +311,14 @@ Item {
             }
         } // TabBar
     } // Pane
+
+    Component.onCompleted: {
+        inputsValueOnInit = Io.getInputs()
+        stIn1.active = inputsValueOnInit & 0x01
+        stIn2.active = inputsValueOnInit & 0x02
+        stIn3.active = inputsValueOnInit & 0x04
+        stIn4.active = inputsValueOnInit & 0x08
+    }
 
     Connections {
         target: Io

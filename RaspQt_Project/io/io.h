@@ -21,6 +21,7 @@ public:
 
     Q_INVOKABLE virtual void outChange(unsigned out, bool state);
     Q_INVOKABLE virtual int getOut();
+    Q_INVOKABLE virtual int getInputs();
     Q_INVOKABLE virtual int getValue();
     Q_INVOKABLE virtual bool isError();
 

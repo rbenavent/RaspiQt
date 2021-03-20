@@ -96,6 +96,7 @@ public:
 
     bool setOut(unsigned char pin, bool value);
     bool getIn(unsigned char pin);
+    int getInputs();
 
 protected:
     virtual void run();

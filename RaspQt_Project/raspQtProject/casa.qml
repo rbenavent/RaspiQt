@@ -30,7 +30,7 @@ Item {
     Text {
         id: ta_Porche
         text: qsTr("Tª:")
-        x:parent.width*0.8
+        x:parent.width*0.7
         y:0
         color:  "WHITE";
         font.pixelSize: parent.height/30
@@ -39,7 +39,7 @@ Item {
     Text {
         id: ta_Comedor
         text: qsTr("Tª:")
-        x:parent.width*0.5
+        x:parent.width*0.4
         y:0
         color:  "WHITE";
         font.pixelSize: parent.height/30
@@ -48,8 +48,8 @@ Item {
     Text {
         id: ta_Cocina
         text: qsTr("Tª:")
-        x:parent.width*0.5
-        y:parent.height*0.8
+        x:parent.width*0.42
+        y:parent.height*0.75
         color:  "WHITE";
         font.pixelSize: parent.height/30
         font.bold: true

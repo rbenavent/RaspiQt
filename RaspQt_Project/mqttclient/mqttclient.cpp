@@ -220,13 +220,13 @@ void MqttClient::error(const QMQTT::ClientError error) {
     emit onerror(error);
 }
 
-int MqttClient::publish(const QString& payload) {
+int MqttClient::publish(const QString& TOPIC_CONTROL, const QString& payload) {
     if (client != nullptr) {
         if (m_connected) {
             qDebug() << "MqttClient::PUBLISH " << payload.toUtf8();
-            QString subscriptionTag = "devices/" + m_device + "/messages/events/";
+            QString subscriptionTag = "devices/" + m_device + "/messages/events/"; //TOPIC_CONTROL
 
-            QMQTT::Message var(uid, subscriptionTag, payload.toUtf8());
+            QMQTT::Message var(uid, TOPIC_CONTROL, payload.toUtf8());
             client->publish(var);
 
             uid++;
@@ -236,6 +236,10 @@ int MqttClient::publish(const QString& payload) {
         }
     }
     return -1;
+}
+
+void MqttClient::publish_topic(const QString &TOPIC_CONTROL,const QString &payload){
+    publish(TOPIC_CONTROL,payload);
 }
 
 void MqttClient::close() {

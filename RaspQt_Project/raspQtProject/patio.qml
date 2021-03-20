@@ -28,16 +28,12 @@ Item {
     Text {
         id: ta_Porche
         text: qsTr("Tª:")
-        x:0
-        y:0
+        x:20
+        y:15
         color:  "WHITE";
         font.pixelSize: parent.height/30
         font.bold: true
     }
-    /*void msgReceived(const QString& msg);
-    void msgTemperaturaPorche(const QString& msg);
-    void msgTemperaturaComedor(const QString& msg);
-    void msgTemperaturaCocina(const QString& msg);*/
 
     Connections{
         target: MqttClient
