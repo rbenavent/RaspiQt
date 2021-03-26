@@ -21,7 +21,7 @@ Item {
         id: pane
         anchors.fill: parent
 
-        /*MediaPlayer {
+        MediaPlayer {
                id: videoPlayer
                source: "http://192.168.0.148/mjpeg/1"
                muted: true
@@ -34,7 +34,7 @@ Item {
                height: 400
                anchors.horizontalCenter: parent.horizontalCenter
                source: videoPlayer
-           }*/
+           }
         /*Video {
             id: cam1Stream
             x: 0
@@ -108,7 +108,7 @@ Item {
 
 
 
-        Image{
+        /*Image{
             id:image1
             anchors.fill: parent
             width: parent.width
@@ -116,16 +116,15 @@ Item {
         }
 
         Timer {
-            id:timercam
+            id:timercam1
             interval: 2000
             running: true
-            repeat: true
+            repeat: false
             onTriggered:  {
                 image1.cache =false;
                 image1.source = "http://192.168.0.148/jpg";
             }
-        }
-
+        }*/
         Button {
             id: b0Out1
             text: qsTr("resetCam")
@@ -141,6 +140,6 @@ Item {
 
     Component.onCompleted: {
 
-        timercam.start()
+        //timercam1.start()
     }
 }

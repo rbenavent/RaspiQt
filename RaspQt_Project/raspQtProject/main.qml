@@ -2,6 +2,8 @@ import QtQuick 2.11
 import QtQuick.Window 2.11
 import QtQuick.Controls 2.4
 
+//import "qrc:WeatherWidget.qml"
+import "qrc:/Widgets"
 
 Window {
     id:rootWindow
@@ -18,6 +20,26 @@ Window {
             id:membrete
             width: rootWindow.width; height: rootWindow.height/7
             color:"#d3d3d3"
+
+            WeatherWidget{
+                id:ww
+                height: membrete.height//root.height/5
+                width: membrete.width/10
+                anchors.top: parent.top
+                anchors.topMargin: 0
+                x:parent.width/20
+                visible: true
+
+                Component.onCompleted: {
+                    /*if(Vending.latitude!==9999 &&Vending.longitud!==9999 ){
+                        ww.latitud=Vending.latitude.toFixed(6)
+                        ww.longitud=Vending.longitude.toFixed(6)
+                        ww.startMonitoring()
+                    }*/
+                    ww.startMonitoring()
+                }
+            }
+
         }
 
         //barra menu
