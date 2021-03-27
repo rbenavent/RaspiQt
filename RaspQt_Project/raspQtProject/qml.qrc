@@ -8,12 +8,6 @@
         <file>images/patio.png</file>
         <file>images/casa.png</file>
         <file>Widgets/WeatherWidget.qml</file>
-        <file>Widgets/weather/wi-alien.svg</file>
-        <file>Widgets/weather/wi-barometer.svg</file>
-        <file>Widgets/weather/wi-celsius.svg</file>
-        <file>Widgets/weather/wi-cloud-down.svg</file>
-        <file>Widgets/weather/wi-cloud-refresh.svg</file>
-        <file>Widgets/weather/wi-cloud-up.svg</file>
         <file>Widgets/weather/wi-cloud.svg</file>
         <file>Widgets/weather/wi-cloudy-gusts.svg</file>
         <file>Widgets/weather/wi-cloudy-windy.svg</file>
@@ -42,90 +36,14 @@
         <file>Widgets/weather/wi-day-sunny.svg</file>
         <file>Widgets/weather/wi-day-thunderstorm.svg</file>
         <file>Widgets/weather/wi-day-windy.svg</file>
-        <file>Widgets/weather/wi-degrees.svg</file>
-        <file>Widgets/weather/wi-direction-down-left.svg</file>
-        <file>Widgets/weather/wi-direction-down-right.svg</file>
-        <file>Widgets/weather/wi-direction-down.svg</file>
-        <file>Widgets/weather/wi-direction-left.svg</file>
-        <file>Widgets/weather/wi-direction-right.svg</file>
-        <file>Widgets/weather/wi-direction-up-left.svg</file>
-        <file>Widgets/weather/wi-direction-up-right.svg</file>
-        <file>Widgets/weather/wi-direction-up.svg</file>
-        <file>Widgets/weather/wi-dust.svg</file>
-        <file>Widgets/weather/wi-earthquake.svg</file>
-        <file>Widgets/weather/wi-fahrenheit.svg</file>
-        <file>Widgets/weather/wi-fire.svg</file>
-        <file>Widgets/weather/wi-flood.svg</file>
-        <file>Widgets/weather/wi-fog.svg</file>
-        <file>Widgets/weather/wi-gale-warning.svg</file>
         <file>Widgets/weather/wi-hail.svg</file>
         <file>Widgets/weather/wi-horizon-alt.svg</file>
         <file>Widgets/weather/wi-horizon.svg</file>
         <file>Widgets/weather/wi-hot.svg</file>
         <file>Widgets/weather/wi-humidity.svg</file>
-        <file>Widgets/weather/wi-hurricane-warning.svg</file>
-        <file>Widgets/weather/wi-hurricane.svg</file>
         <file>Widgets/weather/wi-lightning.svg</file>
         <file>Widgets/weather/wi-lunar-eclipse.svg</file>
         <file>Widgets/weather/wi-meteor.svg</file>
-        <file>Widgets/weather/wi-moon-alt-first-quarter.svg</file>
-        <file>Widgets/weather/wi-moon-alt-full.svg</file>
-        <file>Widgets/weather/wi-moon-alt-new.svg</file>
-        <file>Widgets/weather/wi-moon-alt-third-quarter.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-crescent-1.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-crescent-2.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-crescent-3.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-crescent-4.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-crescent-5.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-crescent-6.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-gibbous-1.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-gibbous-2.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-gibbous-3.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-gibbous-4.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-gibbous-5.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waning-gibbous-6.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-crescent-1.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-crescent-2.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-crescent-3.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-crescent-4.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-crescent-5.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-crescent-6 .svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-gibbous-1.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-gibbous-2.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-gibbous-3.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-gibbous-4.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-gibbous-5.svg</file>
-        <file>Widgets/weather/wi-moon-alt-waxing-gibbous-6 .svg</file>
-        <file>Widgets/weather/wi-moon-first-quarter.svg</file>
-        <file>Widgets/weather/wi-moon-full.svg</file>
-        <file>Widgets/weather/wi-moon-new.svg</file>
-        <file>Widgets/weather/wi-moon-third-quarter.svg</file>
-        <file>Widgets/weather/wi-moon-waning-crescent-1.svg</file>
-        <file>Widgets/weather/wi-moon-waning-crescent-2.svg</file>
-        <file>Widgets/weather/wi-moon-waning-crescent-3.svg</file>
-        <file>Widgets/weather/wi-moon-waning-crescent-4 .svg</file>
-        <file>Widgets/weather/wi-moon-waning-crescent-5.svg</file>
-        <file>Widgets/weather/wi-moon-waning-crescent-6.svg</file>
-        <file>Widgets/weather/wi-moon-waning-gibbous-1.svg</file>
-        <file>Widgets/weather/wi-moon-waning-gibbous-2.svg</file>
-        <file>Widgets/weather/wi-moon-waning-gibbous-3.svg</file>
-        <file>Widgets/weather/wi-moon-waning-gibbous-4.svg</file>
-        <file>Widgets/weather/wi-moon-waning-gibbous-5 .svg</file>
-        <file>Widgets/weather/wi-moon-waning-gibbous-6.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-crescent-1.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-crescent-2.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-crescent-3.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-crescent-4.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-crescent-5.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-crescent-6 .svg</file>
-        <file>Widgets/weather/wi-moon-waxing-gibbous-1.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-gibbous-2.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-gibbous-3.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-gibbous-4 .svg</file>
-        <file>Widgets/weather/wi-moon-waxing-gibbous-5.svg</file>
-        <file>Widgets/weather/wi-moon-waxing-gibbous-6.svg</file>
-        <file>Widgets/weather/wi-moonrise.svg</file>
-        <file>Widgets/weather/wi-moonset.svg</file>
         <file>Widgets/weather/wi-na.svg</file>
         <file>Widgets/weather/wi-night-alt-cloudy-gusts.svg</file>
         <file>Widgets/weather/wi-night-alt-cloudy-high.svg</file>
@@ -191,27 +109,7 @@
         <file>Widgets/weather/wi-strong-wind.svg</file>
         <file>Widgets/weather/wi-sunrise.svg</file>
         <file>Widgets/weather/wi-sunset.svg</file>
-        <file>Widgets/weather/wi-thermometer-exterior.svg</file>
-        <file>Widgets/weather/wi-thermometer-internal.svg</file>
-        <file>Widgets/weather/wi-thermometer.svg</file>
         <file>Widgets/weather/wi-thunderstorm.svg</file>
-        <file>Widgets/weather/wi-time-1.svg</file>
-        <file>Widgets/weather/wi-time-2.svg</file>
-        <file>Widgets/weather/wi-time-3.svg</file>
-        <file>Widgets/weather/wi-time-4.svg</file>
-        <file>Widgets/weather/wi-time-5.svg</file>
-        <file>Widgets/weather/wi-time-6.svg</file>
-        <file>Widgets/weather/wi-time-7.svg</file>
-        <file>Widgets/weather/wi-time-8.svg</file>
-        <file>Widgets/weather/wi-time-9.svg</file>
-        <file>Widgets/weather/wi-time-10.svg</file>
-        <file>Widgets/weather/wi-time-11.svg</file>
-        <file>Widgets/weather/wi-time-12.svg</file>
-        <file>Widgets/weather/wi-tornado.svg</file>
-        <file>Widgets/weather/wi-train.svg</file>
-        <file>Widgets/weather/wi-tsunami.svg</file>
-        <file>Widgets/weather/wi-umbrella.svg</file>
-        <file>Widgets/weather/wi-volcano.svg</file>
         <file>Widgets/weather/wi-wind-beaufort-0.svg</file>
         <file>Widgets/weather/wi-wind-beaufort-1.svg</file>
         <file>Widgets/weather/wi-wind-beaufort-2.svg</file>
