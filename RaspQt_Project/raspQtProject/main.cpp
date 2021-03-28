@@ -62,7 +62,7 @@ int main(int argc, char* argv[]) {
     engine.rootContext()->setContextProperty("ARGLIST", argList);  //test: keep process arguments
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    /*if (engine.rootObjects().isEmpty()) {
+    if (engine.rootObjects().isEmpty()) {
             qCritical() << "******************* ERROR LOADING MAIN !!!!!!!!!!! **************** ";
             return -1;
         }
@@ -94,6 +94,6 @@ int main(int argc, char* argv[]) {
             }
         }
 
-    //wdt.startWdt(); //start WDT*/
+    //wdt.startWdt(); //start WDT
     return app.exec();
 }
