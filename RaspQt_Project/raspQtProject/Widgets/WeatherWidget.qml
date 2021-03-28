@@ -13,8 +13,8 @@ Item{
     property color iconColor:"white"
     //localizacion
     //si queremos nombre de ciudad, habria que mirar la API de yahoo
-    property string latitud: "39.2053019"
-    property string longitud: "-0.4974451"
+    property string latitud: "39.05132"
+    property string longitud: "-0.4251"
     property string urlWeather:"http://api.openweathermap.org/data/2.5/weather"
 
     implicitWidth: 253
@@ -69,13 +69,14 @@ Item{
         id:date
         anchors.left: img.right
         anchors.leftMargin: img.width/4
-        x:parent.width
+        x:0
         y:0
         font.bold: false
         font.pixelSize: parent.height/5
         height: label.font.pixelSize
-        color:"#808080";//"#C0C0C0";//"black";
+        color:"black"//"#808080";//"#C0C0C0";//"black";
     }
+
     CustomText{
         id:label
         property double temp:0
@@ -88,11 +89,21 @@ Item{
         x:0
         y:0//parent.height
         font.bold: true
-        font.pixelSize: parent.height/4
+        font.pixelSize: parent.height/5
         height: font.pixelSize
         //anchors.verticalCenter: parent.verticalCenter
-        color: "#808080";//"white";
+        color: "black"// "#808080";//"white";
     }
+    CustomText{
+        id:description
+        x:0
+        y:parent.height*0.75
+        font.bold: false
+        font.pixelSize: parent.height/5
+        height: label.font.pixelSize
+        color:"black"//"#808080";//"#C0C0C0";//"black";
+    }
+
     //CustomTextes un Text con unas cosas por efecto, fuente etc
     CustomText{
         id:hour
@@ -109,8 +120,8 @@ Item{
     //ImageSvg es un Image con unas cosas por efecto, optimizado pora SVG   
     ImageSvg{
         id:img
-        width: parent.height
-        height: parent.height
+        width: parent.height*0.9
+        height: parent.height*0.9
         //anchors.verticalCenter: parent.verticalCenter
         x:0
         y:0
@@ -144,7 +155,8 @@ Item{
 
                     label.temp=parseFloat(objectjson.main.temp-273)
                     label.code=idYahoo //  objectjson.weather[0].description
-                    label.enWeather=objectjson.weather[0].description
+                    //label.enWeather=objectjson.weather[0].description
+                    description.text=objectjson.weather[0].description
                 } else {
                     console.log("error consulta HTTP WEATHER: " + http.status+"--"+http.statusText )
                 }
