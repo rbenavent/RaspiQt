@@ -15,13 +15,14 @@ Item {
     objectName: "timbre"
 
     width: 640
-    height: 360
+    height: 480
 
     Pane {
         id: pane
         anchors.fill: parent
-
-        MediaPlayer {
+        width: 640
+        height: 480
+        /*MediaPlayer {
                id: videoPlayer
                source: "http://192.168.0.148/mjpeg/1"
                muted: true
@@ -34,7 +35,7 @@ Item {
                height: 400
                anchors.horizontalCenter: parent.horizontalCenter
                source: videoPlayer
-           }
+           }*/
         /*Video {
             id: cam1Stream
             x: 0
@@ -108,23 +109,25 @@ Item {
 
 
 
-        /*Image{
+        Image{
             id:image1
             anchors.fill: parent
             width: parent.width
             height: parent.height
+            x:100
+            y:0
         }
 
         Timer {
             id:timercam1
-            interval: 2000
+            interval: 5000
             running: true
-            repeat: false
+            repeat: true
             onTriggered:  {
                 image1.cache =false;
                 image1.source = "http://192.168.0.148/jpg";
             }
-        }*/
+        }
         Button {
             id: b0Out1
             text: qsTr("resetCam")

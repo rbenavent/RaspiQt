@@ -15,6 +15,7 @@ Window {
         id:page
         anchors.fill: parent
 
+
         //membrete
         Rectangle{
             id:membrete
@@ -24,7 +25,7 @@ Window {
             WeatherWidget{
                 id:ww
                 height: membrete.height//root.height/5
-                width: membrete.width/10
+                width: membrete.width//10
                 anchors.top: parent.top
                 anchors.topMargin: 0
                 x:parent.width/20
@@ -45,36 +46,48 @@ Window {
         //barra menu
         Rectangle{
             id:menuBar
-            width: rootWindow.width/10; height: rootWindow.height - membrete.height
+            width: rootWindow.width/10;
+            height: rootWindow.height - membrete.height
             x:0
             y:membrete.height
-            color:"lightblue"
+            color:"lightblue"            
+
             Column{
                 width: parent.width
-                spacing:10
-                //anchors.centerIn: parent
+                spacing:15
+                //anchors.centerIn: parent                
 
                 Button{
                     width: parent.width
+                    height: parent.height/6
                     text:qsTr("Casa")
                     font.bold: true
                     onClicked: contentFrame.replace("qrc:/casa.qml")//view.view=1
                 }
-
                 Button{
                     width: parent.width
+                    height: parent.height/6
                     text:qsTr("Porche")
                     font.bold: true
                     onClicked: contentFrame.replace("qrc:/patio.qml")
                 }
                 Button{
                     width: parent.width
+                    height: parent.height/6
                     text:qsTr("Timbre")
                     font.bold: true
                     onClicked: contentFrame.replace("qrc:/timbre.qml")
                 }
                 Button{
                     width: parent.width
+                    height:parent.height/6
+                    text:qsTr("Garaje")
+                    font.bold: true
+                    onClicked: contentFrame.replace("qrc:/garaje.qml")
+                }
+                Button{
+                    width: parent.width
+                    //height: parent.height/6
                     text:qsTr("In/Out")
                     font.bold: true
                     onClicked: contentFrame.replace("qrc:/testio.qml")//view.moveItem(thirdPage,firstPage)
@@ -96,8 +109,8 @@ Window {
                 //height: parent.height - membrete.height
                 //x:menuBar.width
                 //y:membrete.height
-                width: parent.width
                 height: parent.height
+                width: parent.width
                 id: contentFrame
                 initialItem: Qt.resolvedUrl("qrc:/casa.qml")
             }

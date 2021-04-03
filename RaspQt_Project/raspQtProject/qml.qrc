@@ -36,5 +36,6 @@
         <file>Widgets/weather/wi-wind-beaufort-6.svg</file>
         <file>Widgets/ImageSvg.qml</file>
         <file>Widgets/CustomText.qml</file>
+        <file>garaje.qml</file>
     </qresource>
 </RCC>

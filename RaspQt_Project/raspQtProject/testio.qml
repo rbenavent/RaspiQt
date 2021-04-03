@@ -27,7 +27,100 @@ Item {
 
             //property var titles: ["1","2","3","4"]
             //Repeater{
+
+            /*
+        target: Io
+        onSgnInputs:{
+            stIn1.active = value & 0x01
+            stIn2.active = value & 0x02
+            stIn3.active = value & 0x04
+            stIn4.active = value & 0x08
+        }
+        */
             GroupBox {
+                id: sInputs
+                title: qsTr("INPUTS");
+
+                Row{
+                    anchors.centerIn: parent
+                    spacing:15
+                    Repeater{
+                        model:["INPUT","INPUT","INPUT","INPUT"] //tambe pot ser un model, no sols un numero
+
+                        ColumnLayout {
+                            //id: rowLayout1
+                            //anchors.fill: parent
+                            Layout.alignment: Qt.AlignTop
+                            Label {
+                                text: modelData + index // Magical words: modelData:INPUT  and  index: 0,1,2,3..
+                                Layout.fillWidth: true
+                                font.pixelSize: 10
+                            }
+                            StatusIndicator {
+                                id: stIn
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+                                color: "green"
+                                Connections{//signal in a repeater
+                                    target:Io
+                                    enabled:true
+                                    onSgnInputs: {
+                                        stIn.active = value & (1<<index)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }//GroupBox
+
+            GroupBox {
+                id: sOutputs
+                title: qsTr("OUTPUTS");
+
+                Row{
+                    anchors.centerIn: parent
+                    spacing:15
+                    Repeater{
+                        model:["OUTPUT","OUTPUT","OUTPUT","OUTPUT","OUTPUT","OUTPUT"] //tambe pot ser un model, no sols un numero
+
+                        ColumnLayout {
+                            Layout.alignment: Qt.AlignTop
+                            Label {
+                                text: modelData + index
+                                Layout.fillWidth: true
+                                font.pixelSize: 10
+                            }
+                            StatusIndicator {
+                                id: stOut
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+                                color: "green"
+                                Connections{//signal in a repeater
+                                    target:Io
+                                    enabled:true
+                                    onSgnOutputs: {
+                                        stOut.active = value & (1<<index)
+                                    }
+                                }
+                            }
+                            Button {
+                                text: qsTr("1")
+                                onClicked:Io.outChange(index, true)
+                            }
+
+                            Button {
+                                text: qsTr("0")
+                                onClicked:Io.outChange(index, false)
+                            }
+
+                        }
+                    }
+                }
+            }//GroupBox OUTPUT
+
+
+            /*GroupBox {
                 id: sInputs
                 title: qsTr("INPUTS");
 
@@ -40,9 +133,6 @@ Item {
                     height: parent.height - tabBar.height
 
                     x:0
-                    /*columnSpacing: 0
-                    rowSpacing: 0
-                    columns: 4*/
 
                     ColumnLayout {
                         id: rowLayout1
@@ -113,10 +203,10 @@ Item {
                         }
                     }
                 }
-            } // GroupBox
+            } // GroupBox*/
 
 
-            GroupBox {
+            /*GroupBox {
                 id:sOutputs
                 title: qsTr("OUTPUTS");
 
@@ -150,13 +240,13 @@ Item {
                         Button {
                             id: b1Out1
                             text: qsTr("1")
-                            onClicked:Io.outChange(0, true)
+                            //onClicked:Io.outChange(0, true)
                         }
 
                         Button {
                             id: b0Out1
                             text: qsTr("0")
-                            onClicked:Io.outChange(0, false)
+                            //onClicked:Io.outChange(0, false)
                         }
                     }
 
@@ -292,7 +382,7 @@ Item {
                     }
 
                 }//RowLayout OUTPUTS
-            }// GroupBox
+            }*/// GroupBox
         }//SwipeView
 
         // Barra de pestañas
@@ -314,13 +404,13 @@ Item {
 
     Component.onCompleted: {
         inputsValueOnInit = Io.getInputs()
-        stIn1.active = inputsValueOnInit & 0x01
+        /*stIn1.active = inputsValueOnInit & 0x01
         stIn2.active = inputsValueOnInit & 0x02
         stIn3.active = inputsValueOnInit & 0x04
-        stIn4.active = inputsValueOnInit & 0x08
+        stIn4.active = inputsValueOnInit & 0x08*/
     }
 
-    Connections {
+    /*Connections {
         target: Io
         onSgnInputs:{
             stIn1.active = value & 0x01
@@ -335,6 +425,6 @@ Item {
             stOut4.active = value & 0x08
             stOut5.active = value & 0x10
         }
-    }
+    }*/
 
 }

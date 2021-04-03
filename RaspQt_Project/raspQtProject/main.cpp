@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
                              });
         }
 
-        if (window) {
+        /*if (window) {
             if (QGuiApplication::platformName() == QLatin1String("qnx") ||
                 QGuiApplication::platformName() == QLatin1String("eglfs") ||
                 QSysInfo::currentCpuArchitecture().toLower().contains("arm")) {
@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
             } else {
                 window->showMaximized();
             }
-        }
+        }*/
 
     //wdt.startWdt(); //start WDT
     return app.exec();
