@@ -13,9 +13,12 @@ Item{
     property color iconColor:"white"
     //localizacion
     //si queremos nombre de ciudad, habria que mirar la API de yahoo
-    property string latitud: "39.05132"
-    property string longitud: "-0.4251"
+    property string latitud: "39.05125"
+    property string longitud: "-0.49255"
     property string urlWeather:"http://api.openweathermap.org/data/2.5/weather"
+    property string urlWeatherForecast:"http://api.openweathermap.org/data/2.5/forecast"
+    //api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}   by city name
+    //api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}  by coordinates
 
     implicitWidth: 253
     implicitHeight: 58
@@ -24,11 +27,6 @@ Item{
         timer.restart()
 
     }
-
-    /*Connections{
-        target:TR
-        onRetranslate:processDate() //cambio de idioma al momento de la fecha (no esperar al timer que cambia la hora)
-    }*/
 
     Timer{
         id:timer
@@ -43,9 +41,18 @@ Item{
             var url=urlWeather+"?lat="+latitud
             url+="&lon="+longitud
             url+="&mode=json"
-            url+="&APPID="+ "a6a24bc53de9ed1931bd2a368f44fdee"
+            url+="&APPID="+ "e994e53c660374ee25b2c3ab878ab8cf"
             url+="&lang="+ "sp"
+
+            var urlforecast=urlWeatherForecast+"?lat="+latitud
+            urlforecast+="&lon="+longitud
+            urlforecast+="&mode=json"
+            //url+="&APPID="+ "a6a24bc53de9ed1931bd2a368f44fdee"
+            urlforecast+="&APPID="+ "e994e53c660374ee25b2c3ab878ab8cf"
+            urlforecast+="&lang="+ "sp"
+
             getUrl(url)
+            getUrlForecast(urlforecast)
 
         }
     }
@@ -127,6 +134,15 @@ Item{
         y:0
         visible:true
     }
+    ImageSvg{
+        id:img_2
+        width: parent.height*0.9
+        height: parent.height*0.9
+        //anchors.verticalCenter: parent.verticalCenter
+        x:img.width*2
+        y:0
+        visible:true
+    }
     //pasar el SVG a iconColor
     /*ColorOverlay {
         visible: img.source!="" &&img.status==Image.Ready
@@ -165,6 +181,38 @@ Item{
         }
         http.send();
     }
+
+    function getUrlForecast(urlforecast) {
+        var  http = new XMLHttpRequest()
+
+        http.open("GET", urlforecast, true);
+        http.setRequestHeader("Accept","application/json");
+
+        http.onreadystatechange = function() { // Call a function when the state changes.
+            if (http.readyState === XMLHttpRequest.DONE) {
+                if (http.status === 200) {
+
+                    var objectjson= JSON.parse(http.responseText) //parsear JSON
+
+                    /*if(!objectjson|| !objectjson.weather|| !objectjson.main) return
+                    var condition=objectjson.weather[0].icon //ver JSON respuesta
+
+                    var idYahoo=setWeatherIconOpenWeather(condition)
+
+                    label.temp=parseFloat(objectjson.main.temp-273)
+                    label.code=idYahoo //  objectjson.weather[0].description
+                    //label.enWeather=objectjson.weather[0].description
+                    description.text=objectjson.weather[0].description*/
+                } else {
+                    console.log("error consulta HTTP WEATHER: " + http.status+"--"+http.statusText )
+                }
+
+            }
+        }
+        http.send();
+    }
+
+
         function setWeatherIconOpenWeather(weatherIcon) {
         switch (weatherIcon) {
         case "01d":
@@ -307,6 +355,7 @@ Item{
         }
 
         img.source= "./weather/"+ icon+'.svg';
+        img_2.source= "./weather/"+ icon+'.svg';
 
         return condid //devolver el numero de id equivalente a yahoo
     }
