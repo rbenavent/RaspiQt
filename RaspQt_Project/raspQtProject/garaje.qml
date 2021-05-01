@@ -3,6 +3,7 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Extras 1.4
 
+//import Qt5GStreamer  1.0
 import QtMultimedia 5.4
 
 import mqttclient.mqttclient   1.0
@@ -19,21 +20,46 @@ Item {
         id: pane
         anchors.fill: parent
 
+        /*Video {
+            id: cam1Stream
+            x: 100
+            y: 0
+            width: 600
+            height: 400
+            source: "http://localhost:8081"
+            autoPlay: true
+            opacity: 1.0
+            fillMode: Image.Stretch
+            muted: false
+        }*/
+
+        /*Video {
+            id: cam1Stream
+
+            width: parent.width
+            height: parent.height
+            source: "http://192.168.0.23:8081"
+            autoPlay: true
+            opacity: 1.0
+            fillMode: Image.Stretch
+            muted: false
+        }*/
+
         /*MediaPlayer {
             id: videoPlayer
-            source: "http://192.168.0.148/mjpeg/1"
+            source: "http://localhost:8081"
             muted: true
             autoPlay: true
-        }
+        }*/
 
-        VideoOutput {
+        /*VideoOutput {
             id: camera1
             x: 0
             y: 100
             width: 600
             height: 400
             anchors.horizontalCenter: parent.horizontalCenter
-            source: videoPlayer
+            source: "http://192.168.0.23:8081"
         }*/
 
         Button {
@@ -46,6 +72,33 @@ Item {
                 quitarPuerta.start()
             }
         }
+        Rectangle {
+            //x:100
+            //y:0
+            width: 800
+            height: 600
+
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: bAbrirCerrarGaraje.width
+
+            color: "black"
+
+            MediaPlayer {
+                id: player
+                source: "rtsp://192.168.0.23:8554/stream"
+                autoPlay: true
+            }
+
+            VideoOutput {
+                id: videoOutput
+                source: player
+                anchors.fill: parent
+                rotation: 180
+            }
+        }
+
     } // Pane
 
     Timer{
@@ -58,4 +111,5 @@ Item {
             quitarPuerta.stop()
         }
     }
+
 }

@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QtDebug>
-
+//#include <QtW
 #include <QOpenGLContext>
 #include <QOpenGLFunctions>
 #include <QQuickWindow>
@@ -84,15 +84,15 @@ int main(int argc, char* argv[]) {
                              });
         }
 
-        /*if (window) {
+        if (window) {
             if (QGuiApplication::platformName() == QLatin1String("qnx") ||
                 QGuiApplication::platformName() == QLatin1String("eglfs") ||
                 QSysInfo::currentCpuArchitecture().toLower().contains("arm")) {
-                window->showFullScreen();
+               window->showFullScreen();
             } else {
                 window->showMaximized();
             }
-        }*/
+        }
 
     //wdt.startWdt(); //start WDT
     return app.exec();

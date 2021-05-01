@@ -2,7 +2,6 @@ import QtQuick 2.11
 import QtQuick.Window 2.11
 import QtQuick.Controls 2.4
 
-//import "qrc:WeatherWidget.qml"
 import "qrc:/Widgets"
 
 Window {
@@ -19,26 +18,21 @@ Window {
         //membrete
         Rectangle{
             id:membrete
-            width: rootWindow.width; height: rootWindow.height/7
+            width: rootWindow.width
+            height: rootWindow.height/7
             color:"#d3d3d3"
 
             WeatherWidget{
                 id:ww
                 height: membrete.height//root.height/5
                 width: membrete.width//10
-                anchors.top: parent.top
-                anchors.topMargin: 0
-                x:parent.width/20
+                //anchors.top: parent.top
+                //anchors.topMargin: 0
+                x:0//parent.width/20
+                y:0
                 visible: true
 
-                Component.onCompleted: {
-                    /*if(Vending.latitude!==9999 &&Vending.longitud!==9999 ){
-                        ww.latitud=Vending.latitude.toFixed(6)
-                        ww.longitud=Vending.longitude.toFixed(6)
-                        ww.startMonitoring()
-                    }*/
-                    ww.startMonitoring()
-                }
+                Component.onCompleted: ww.startMonitoring()
             }
 
         }
@@ -91,6 +85,16 @@ Window {
                     text:qsTr("In/Out")
                     font.bold: true
                     onClicked: contentFrame.replace("qrc:/testio.qml")//view.moveItem(thirdPage,firstPage)
+                }
+                Button{
+                    width: parent.width
+                    //height: parent.height/6
+                    text:qsTr("Salirapp")
+                    font.bold: true
+                    onClicked:{
+                        //QmlUtils.restart(0);
+                        Qt.quit()
+                    }
                 }
             }
 

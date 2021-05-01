@@ -23,6 +23,33 @@ Item {
             anchors.fill: parent
             source: "images/patio.png"
         }
+        /*Rectangle {
+            //x:100
+            //y:0
+            width: 800
+            height: 600
+
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 100
+
+            color: "black"
+
+            MediaPlayer {
+                id: player
+                source: "rtsp://192.168.0.153:8554/mjpeg/1"
+                autoPlay: true
+            }
+
+            VideoOutput {
+                id: videoOutput
+                source: player
+                anchors.fill: parent
+                //rotation: 180
+            }
+        }*/
+
     } // Pane
 
     Text {
