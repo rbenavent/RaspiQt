@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>ssl/azure.crt</file>
-        <file>ssl/mosquitto.org.crt</file>
-        <file>qmqtt/LICENSE</file>
-    </qresource>
-</RCC>

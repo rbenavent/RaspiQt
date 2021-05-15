@@ -1,3 +1,0 @@
-https://github.com/emqtt/qmqtt
-Commits on Jan 25, 2018
-parent 0bcdc2f commit cb2c4b2bc1edf323f371446a7b95eb65421a99da
